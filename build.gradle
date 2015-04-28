@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
+        classpath("org.springframework:springloaded:1.2.1.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'transaction-service'
+    version = '0.0.1-SNAPSHOT'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web",//TODO 本来不需要spring-mvc的，但是没有的话，jetty会报一个警告
+            "org.springframework.boot:spring-boot-starter-jetty",
+            "org.springframework.boot:spring-boot-starter-actuator",
+            "org.springframework.boot:spring-boot-starter-jersey",
+            "org.springframework.boot:spring-boot-starter-data-jpa",
+            "com.h2database:h2",
+            "org.codehaus.groovy:groovy-all:2.3.9",
+            "org.grails:gorm-hibernate4-spring-boot:1.1.0.RELEASE"
+    )
+
+    testCompile("org.springframework.boot:spring-boot-starter-test",
+            "org.codehaus.groovy:groovy-all:2.3.9",
+            "org.spockframework:spock-core:0.7-groovy-2.0",
+            "org.spockframework:spock-spring:0.7-groovy-2.0",
+            "org.mock-server:mockserver-netty:3.9.1",
+            "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-jetty:2.14"
+    )
+}

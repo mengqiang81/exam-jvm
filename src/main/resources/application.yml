@@ -1,0 +1,23 @@
+server.port: 8083
+logging:
+  path:
+  file: transaction-service.log
+
+spring:
+  application.name: transaction-service
+  profiles.active: development
+
+jersey:
+  scanPackages: org.nofdev.transaction #TODO 不知道为什么jersey的packages方法不支持传入数组
+
+#  main:
+#    web-environment: true
+
+---
+spring:
+  profiles: development
+
+---
+spring:
+  profiles: test
+
