@@ -1,16 +1,31 @@
 package com.garyhj.entity;
 
-import java.util.Date;
-
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class TransRecord {
-	public String trans_id;
-	public String create_time;
-	public String trans_status;
-	public String trans_type;
-	public String trans_amount;
-	public String trans_currency;
-	public String cust_info ;
+	private String trans_id;
+	private String create_time;
+	private String trans_status;
+	private String trans_type;
+	private String trans_amount;
+	private String trans_currency;
+	private String cust_info ;
 	
+	public TransRecord() {
+		super();
+	}
+	public TransRecord(String trans_id, String create_time,
+			String trans_status, String trans_type, String trans_amount,
+			String trans_currency, String cust_info) {
+		super();
+		this.trans_id = trans_id;
+		this.create_time = create_time;
+		this.trans_status = trans_status;
+		this.trans_type = trans_type;
+		this.trans_amount = trans_amount;
+		this.trans_currency = trans_currency;
+		this.cust_info = cust_info;
+	}
 	public String getCreate_time() {
 		return create_time;
 	}
