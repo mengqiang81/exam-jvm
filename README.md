@@ -29,3 +29,8 @@
 
 ## 其他
 * 如果您的构建和运行过程比较难以理解的话，建议您修改 Readme 的这个地方添加一些说明文字。
+
+交易状态: Completed:已完成  Pending：待付款  Reversed：已撤销   Refunded：已退款
+交易类型: Pay：支付  Refund：付款
+交易币种: CNY：人民币  USD：美元
+
